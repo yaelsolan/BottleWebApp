@@ -18,7 +18,7 @@ def follow_yooli():
 
 
 @get('/login') #create new route; request
-def login():
+def ():
     return '''
         <form action="/login" method="post">
             Username: <input name="username" type="text" />
