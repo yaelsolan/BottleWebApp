@@ -17,7 +17,7 @@ def follow_yooli():
 	return "Follow yooli"
 
 
-@get('/login') #create new route- login
+@get('/login') #create new route; request
 def login():
     return '''
         <form action="/login" method="post">
