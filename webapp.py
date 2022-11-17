@@ -1,4 +1,4 @@
-from bottle import route, run, template, get, post, request
+from bottle import route, run, template, get, post, request, error
 @route('/')
 def index():
 	return "My first web app with bottle"
@@ -18,7 +18,7 @@ def follow_yooli():
 
 
 @get('/login') #create new route; request
-def ():
+def login ():
     return '''
         <form action="/login" method="post">
             Username: <input name="username" type="text" />
@@ -35,5 +35,10 @@ def check_login():
         return "<p>Your login information was correct.</p>"
     else:
         return "<p>Login failed.</p>"
+	
+@error(404)
+def error404(error):
+    return 'Nothing here, sorry'	
+	
 	
 run(host="localhost", port=8080, debug=True, reloader=True)
