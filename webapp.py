@@ -16,7 +16,7 @@ def wiki_Learn():
 def follow_yooli():
 	return "Follow yooli"
 
-@get('/login')
+@get('/login') #New route- request
 def login():
     return '''
         <form action="/login" method="post">
