@@ -1,4 +1,4 @@
-from bottle import route, run, template, get, post, request, error
+from bottle import route, run, template, get, post, request, error, response, static_file
 @route('/')
 def index():
 	return "My first web app with bottle"
@@ -39,6 +39,23 @@ def check_login():
 @error(404)
 def error404(error):
     return 'Nothing here, sorry'	
+    
+@route('/iso')
+def get_iso():
+    response.charset = 'ISO-8859-15'
+    return u'This will be sent with ISO-8859-15 encoding.'
+
+@route('/latin9')
+def get_latin():
+    response.content_type = 'text/html; charset=latin9'
+    return u'ISO-8859-15 is also known as latin9.'
 	
+@route('/images/<filename:re:.*\.jpeg>')
+def send_image(filename):
+    return static_file(filename, root='/home/yael/bottle', mimetype='yool.jpeg')
+
+@route('/static/<yool:/home/yael/bottle>')
+def send_static(yool):
+    return static_file(filename, root='/home/yael/bottle')
 	
 run(host="localhost", port=8080, debug=True, reloader=True)
