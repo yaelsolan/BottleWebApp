@@ -54,8 +54,13 @@ def get_latin():
 def send_image(filename):
     return static_file(filename, root='/home/yael/bottle', mimetype='yool.jpeg')
 
-@route('/static/<yool:/home/yael/bottle>')
-def send_static(yool):
-    return static_file(filename, root='/home/yael/bottle')
+@route('/static/<filename:path>')
+def send_static(filename):
+    return static_file(filename, root='/home/yael/bottle')  
+    
+@route('/download/<filename:path>')
+def download(filename):
+    return static_file(filename, root='/home/yael/bottle', download=filename)
+
 	
 run(host="localhost", port=8080, debug=True, reloader=True)
