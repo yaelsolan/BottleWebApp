@@ -102,5 +102,14 @@ def restricted_area():
         return template("Hello {{name}}. Welcome back.", name=username)
     else:
         return "You are not logged in. Access denied."
+        
+@route('/counter')
+def counter():
+    count = int( request.cookies.get('counter', '0') )
+    count += 1
+    response.set_cookie('counter', str(count))
+    return 'You visited this page %d times' % count
+    
+    
     
 run(host="localhost", port=8080, debug=True, reloader=True)
