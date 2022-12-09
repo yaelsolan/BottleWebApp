@@ -28,7 +28,7 @@ def login ():
     '''
 
 @post('/login') 
-def check_login():
+def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
     if check_login(username, password):
