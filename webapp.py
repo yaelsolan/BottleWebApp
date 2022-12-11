@@ -111,5 +111,17 @@ def counter():
     return 'You visited this page %d times' % count
     
     
-    
+@route('/is_ajax')
+def is_ajax():
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return 'This is an AJAX request'
+    else:
+        return 'This is a normal request'  
+  
+@route('/forum')
+def display_forum():
+    forum_id = request.query.id
+    page = request.query.page or '1'
+    return template('Forum ID: {{id}} (page {{page}})', id=forum_id, page=page)
+
 run(host="localhost", port=8080, debug=True, reloader=True)
