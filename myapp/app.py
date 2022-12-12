@@ -114,7 +114,6 @@ def counter():
     response.set_cookie('counter', str(count))
     return 'You visited this page %d times' % count
     
-<<<<<<< HEAD:webapp.py
     
 @route('/is_ajax')
 def is_ajax():
@@ -129,8 +128,6 @@ def display_forum():
     page = request.query.page or '1'
     return template('Forum ID: {{id}} (page {{page}})', id=forum_id, page=page)
 
-run(host="localhost", port=8080, debug=True, reloader=True)
-=======
 
 if __name__ == '__main__':
     run(app=app,
@@ -139,4 +136,3 @@ if __name__ == '__main__':
         port=8080,
         debug=True,
         reloader=True)
->>>>>>> 8e39a038fbbdda677444326fe5498dfc748547a1:myapp/app.py
